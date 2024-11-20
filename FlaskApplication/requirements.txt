@@ -1,0 +1,12 @@
+Flask
+Flask-SocketIO
+Flask-WTF
+Flask-CORS
+Werkzeug
+mariadb
+WTForms
+opencv-python
+ultralytics
+boto3
+flask-sqlalchemy
+python-dotenv

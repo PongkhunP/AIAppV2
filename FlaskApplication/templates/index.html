@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header class="feature-box right">
+        <nav>
+          <li><a href="/home">back to home</a></li>
+        </nav>
+    </header>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <video id="video" width="640" height="480" autoplay style="display:none;"></video>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <section class="col-sm">
+        <img id="processedFrame" alt="Processed Frame">
+    </section>
+    <form method="post" action="{{ url_for('toggle_webcam') }}" id="toggleForm">
+        <button type="submit" id="toggleButton">
+            {{ "Stop Webcam" if is_running else "Start Webcam" }}
+        </button>
+        <label for="webcamSelect">Choose a webcam:</label>
+        <select name="webcam_id" id="webcamSelect">
+          <!-- Options will be dynamically populated -->
+        </select>
+        <label for="confLevelSelect">Select Confidence Level:</label>
+          <select id="confLevelSelect">
+              <!-- Confidence levels will be populated dynamically -->
+          </select>
+      </form>
+      
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const imgElement = document.getElementById('processedFrame');
+        const socket = io.connect(window.location.origin);
+
+        // Start video streaming from user's webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.error("Error accessing webcam: ", err);
+            });
+
+        // Capture frames and send to backend every 100 ms
+        setInterval(() => {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const frameData = canvas.toDataURL('image/jpeg');
+            socket.emit('frame', { image: frameData });
+        }, 500);
+
+        // Handle the processed frame from the server
+        socket.on('processed_frame', (data) => {
+            imgElement.src = `data:image/jpeg;base64,${data.image}`;
+        });
+        
+    </script>
+</body>
+</html>

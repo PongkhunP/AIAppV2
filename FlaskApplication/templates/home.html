@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home_YOLOv8_Sirways</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Home.css') }}">
+</head>
+<body>
+    <!-- Video Section -->
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="{{ url_for('static', filename='clips/realtimevid.mp4') }}" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Centered Buttons and Title -->
+    <div class="content">
+        <div class="button-container">
+            <button class="action-button" onclick="window.location.href='/webcam'">LiveWebcam</button>
+            <button class="action-button" onclick="window.location.href='/gallery'">Record</button>
+        </div>
+    </div>
+</body>
+</html>

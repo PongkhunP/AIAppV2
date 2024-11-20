@@ -1,0 +1,319 @@
+    html, body {
+        font-family: Helvetica, sans-serif;
+        height: 100%; /* Full height of the page */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;  /* Prevent scrolling */
+    }
+
+    /* Make the video fill the viewport, slightly move it up through the header */
+    #myVideo {
+        position: absolute; /* Position relative to the parent container */
+
+        width: 100%;  /* Fill the entire width of the viewport */
+        height: 100%; /* Extend the height to compensate for the header overlap */
+        object-fit: cover; /* Cover the area without distortion */
+        z-index: -1;
+    }
+
+    /* Header styling */
+    header.feature-box.right {
+        background: linear-gradient(135deg, #ff9e00, #ff6600); /* Gradient for depth */
+        color: white;
+        height: 80px;
+        padding: 15px 40px; /* Increased padding for more space */
+        text-align: center; /* Center the header */
+        display: flex;
+        justify-content: flex-end; /* Spread out the links */
+        align-items: center; /* Align items vertically */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+        border-radius: 8px; /* Rounded corners for a softer look */
+        position: relative; /* Ensure header is above the video */
+        z-index: 2; /* Keep the header on top */
+    }
+
+    /* Navigation styling */
+    header.feature-box.right nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: flex-end; /* Center the navigation links */
+    }
+
+    header.feature-box.right nav ul li {
+        margin: 0 20px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: bold;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    header.feature-box.right nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-family: 'Roboto', sans-serif; /* Stylish modern font */
+        transition: color 0.3s ease;
+    }
+
+    header.feature-box.right nav ul li:hover {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    header.feature-box.right nav ul li a:hover {
+        color: #ff6600; /* Change link color on hover */
+    }
+
+    header.feature-box.right nav ul li a:active {
+        color: #e65800; /* Active state color */
+    }
+
+    ul{
+    list-style:none;
+    padding:0px;}
+    li {
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        background: linear-gradient(135deg, #ff9e00, #ff6600); /* Gradient background for a more dynamic look */
+        border-radius: 12px; /* Slightly larger border-radius for smoother curves */
+        padding: 12px 20px; /* Padding for better space and readability */
+        margin: 10px;
+        font-size: 16px; /* Increase font size for readability */
+        font-weight: 600; /* Bold text for emphasis */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        transition: all 0.3s ease-in-out; /* Smooth transition for all effects */
+        cursor: pointer; /* Pointer cursor for better interaction */
+    }
+
+    li a {
+        text-decoration: none;
+        color: white;
+        font-size: inherit; /* Ensure link inherits font size from li */
+    }
+
+    li:hover {
+        background: linear-gradient(135deg, #ff7a00, #ff4500); /* Darker gradient on hover */
+        transform: scale(1.08); /* Slight zoom effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More prominent shadow for hover */
+    }
+
+    li:active {
+        background: linear-gradient(135deg, #cc6400, #cc5200); /* Even darker gradient on active (tap/click) */
+        transform: scale(0.98); /* Shrinks slightly when clicked */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Less shadow on active for pressed effect */
+    }
+    header a{
+    color:white;
+    text-decoration:none;
+    width:100%;
+    }
+    .details{
+    height:80px;
+    margin:40px;
+    padding:0px;
+    font-size:40px;
+    background-color:gray;
+    text-align:center;
+    color:black;
+    }
+
+
+    .features{
+    background:white;
+    color:gray;
+    display:flex;
+    flex-direction:row;
+    padding:20px;
+
+    }
+    .features figure
+    {/*background:pink;*/
+    width:400px;
+    margin:auto;
+    text-align:center;
+    text-transform:uppercase;
+    }
+    .features figure img{
+    border-radius:10%;
+    width:400px;
+    }
+    div.main{
+    display:flex;
+    margin:40px;
+    letter-spacing:1px;
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Playfair Display";
+    letter-spacing: 5px;
+    }
+    }
+    .subpart2{
+    text-align:center;
+    text-transform:uppercase;
+    }
+    .subpart2 figure img{
+    border-radius:4%;
+    width:800px;
+    }
+    .contactpage{
+    margin:20px;
+    }
+    #textbox {
+   font-size: 18pt;
+    height: 42px;
+    width : 1000px;
+    }
+    #textboxes {
+   font-size: 18pt;
+    height: 42px;
+    width : 1000px;
+    }
+    footer{
+    background-color:black;
+    text-align:center;
+    margin:0px;
+    padding:0px;
+    color:white;
+    font-size:20px;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.7; /* 30% opacity */
+        z-index: 1; /* Make sure it is above the video */
+    }
+        /* Button Container Styling */
+        .button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the buttons */
+            display: flex;
+            flex-direction: row;
+            gap: 40px; /* Space between buttons */
+            z-index: 2; /* Ensure buttons are above the video and overlay */
+        }
+        
+            /* Button Base Styling */
+    .action-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background-color: #ff6600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 200px; /* Make button size consistent */
+        text-align: center;
+        opacity: 0.9; /* Reduced opacity */
+        box-shadow: 0 0 10px rgba(255, 102, 0, 0.7); /* Subtle glowing shadow */
+        position: relative; /* Ensure the span is positioned correctly */
+        overflow: hidden; /* Hide the border animations */
+    }
+
+    /* Shiny Hover Effect */
+    .action-button:hover {
+        background-color: #ff8533; /* Slightly brighter color on hover */
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 102, 0, 1); /* Bright glowing effect on hover */
+        opacity: 1; /* Full opacity on hover */
+    }
+
+    /* Active Button State */
+    .action-button:active {
+        background-color: #cc5200;
+        transform: scale(1);
+        box-shadow: none; /* Remove glow effect when active */
+    }
+
+    /* Inside Span for Border Animation */
+    .action-button span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Border Effects on Hover (before & after) */
+    .action-button:before,
+    .action-button:after {
+        position: absolute;
+        content: "";
+        height: 0%;
+        width: 1px;
+        box-shadow:
+        -1px -1px 20px 0px rgba(255, 255, 255, 1),
+        -4px -4px 5px 0px rgba(255, 255, 255, 1),
+        7px 7px 20px 0px rgba(0, 0, 0, .4),
+        4px 4px 5px 0px rgba(0, 0, 0, .3);
+    }
+
+    .action-button:before {
+        right: 0;
+        top: 0;
+        transition: all 500ms ease;
+    }
+
+    .action-button:after {
+        left: 0;
+        bottom: 0;
+        transition: all 500ms ease;
+    }
+
+    /* Hover Effect on Border (before & after) */
+    .action-button:hover:before,
+    .action-button:hover:after {
+        height: 100%;
+    }
+
+    /* Inside Span Border Animations */
+    .action-button span:before,
+    .action-button span:after {
+        position: absolute;
+        content: "";
+        box-shadow:
+        -1px -1px 20px 0px rgba(255, 255, 255, 1),
+        -4px -4px 5px 0px rgba(255, 255, 255, 1),
+        7px 7px 20px 0px rgba(0, 0, 0, .4),
+        4px 4px 5px 0px rgba(0, 0, 0, .3);
+    }
+
+    .action-button span:before {
+        left: 0;
+        top: 0;
+        width: 0%;
+        height: .5px;
+        transition: all 500ms ease;
+    }
+
+    .action-button span:after {
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: .5px;
+        transition: all 500ms ease;
+    }
+
+    /* Hover Effect on Span Borders */
+    .action-button span:hover:before,
+    .action-button span:hover:after {
+        width: 100%;
+    }
+            /* Title Styling */
+        /* Title Styling */
+        .site-title {
+            font-size: 60px; /* Large size for visibility */
+            font-weight: bold; /* Bold text */
+            color: #ff6600; /* Bright color for the title */
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px; /* Space between the title and buttons */
+            z-index: 2; /* Ensure title is above the overlay */
+            position: relative; /* Ensure proper stacking context */
+        }

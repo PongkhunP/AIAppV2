@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webcam_off</title>
+    <style>
+        body{
+            color:white;
+            margin:0px;
+            padding:0px;
+        }
+        header.feature-box.top{
+        color: aliceblue;
+        background-color:rgb(255, 170, 0);
+        height:80px;
+        margin:0px;
+        padding:20px;
+        text-align:right;
+
+        }
+        header.feature-box.second{
+        background-color:rgb(255, 170, 0);
+        height:50px;
+        text-align:center;
+        margin-top:-25px;
+        }
+        .features{
+          background-color:black;
+          width: 900px;
+          height: 700px;
+          border-radius: 35px;
+          object-fit: contain;
+          margin:20px;
+        }
+        header.feature-box.right{
+        background-color:rgb(255, 170, 0);
+        color:white;
+        height:120px;
+        padding:5px;
+        text-align:right;
+        }
+        section.col-sm{
+          background-color:black;
+          width: 1000px;
+          height: auto;
+          border-radius: 35px;
+          object-fit: contain;
+          margin:40px;
+        }
+
+        img{
+          width: 900px;
+          height: 600px;
+          border-radius: 35px;
+          object-fit: contain;
+          margin:40px;
+        }
+        li{
+        text-decoration: none;
+        color: aliceblue;
+        display:inline-block;
+        background-color:gray;
+        border-radius:10px;
+        padding:10px;
+        margin:10px;
+        }
+        li a {
+        text-decoration: none;
+        color: aliceblue;
+        }
+        li:hover{
+        background-color:red;
+        margin:10px;
+        }
+        .new{
+        color:black;
+        margin:0px;
+        padding:10px;
+        background-color:green;
+        margin:0px;
+        margin-top:-10px;
+        }
+        button{
+          border-radius:10px;
+          width: 120;
+          height: 60px;
+          margin-top: auto;
+          margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="feature-box top">
+  <nav>
+    <li><a href="/home">back to home</a></li>
+  </nav>
+</header>
+<!-- <header class="feature-box second">
+     <h1><strong>Output Video</strong></h1>
+</header> -->
+
+  <section class="col-sm " >
+          
+          <img src="{{ url_for('closewebapp') }}"   alt="web cam">
+
+  </section>
+  <button id="toggle-button">Toggle Webcam</button>
+
+<script>
+  const toggleButton = document.getElementById('toggle-button');
+  toggleButton.addEventListener('click', () => {
+    // Update is_running variable using AJAX or Fetch API
+    fetch('/webcam', { method: ['POST','GET'] })});
+</script>
+</body>
+</html>

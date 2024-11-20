@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webcam</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<header class="feature-box right">
+  <nav>
+    <li><a href="/home">back to home</a></li>
+  </nav>
+</header>
+
+<body>
+<section class="col-sm">
+  <img src="{{ url_for('video_feed') }}" alt="Webcam Feed or Fallback Image">
+</section>
+<form method="post" action="{{ url_for('toggle_webcam') }}" id="toggleForm">
+  <button type="submit" id="toggleButton">
+      {{ "Stop Webcam" if is_running else "Start Webcam" }}
+  </button>
+  <label for="webcamSelect">Choose a webcam:</label>
+  <select name="webcam_id" id="webcamSelect">
+    <!-- Options will be dynamically populated -->
+  </select>
+  <label for="confLevelSelect">Select Confidence Level:</label>
+    <select id="confLevelSelect">
+        <!-- Confidence levels will be populated dynamically -->
+    </select>
+</form>
+
+<script>
+    const socket = io();
+    socket.emit('start_video_stream', {
+    path_x: selectedWebcam,
+    is_run: false,
+    confidence_lv: 0.7
+    });
+// Start the video stream
+    function startStream() {
+        const webcamSelect = document.getElementById("webcamSelect");
+        const confLevelSelect = document.getElementById("confLevelSelect");
+        const selectedWebcamId = webcamSelect.value || 0;  // Default to webcam 0
+        const selectedConfLevel = confLevelSelect.value || 0.7;
+
+        socket.emit('start_video_stream', {
+            path_x: parseInt(selectedWebcamId),
+            is_running: true,
+            confidence_lv: parseFloat(selectedConfLevel),
+        });
+
+        // Handle incoming frames
+        socket.on('webcam_frame', (data) => {
+            const imgElement = document.querySelector('img');
+            imgElement.src = `data:image/jpeg;base64,${data.image}`;
+        });
+    }
+
+    // Stop the video stream
+    function stopStream() {
+        socket.emit('stop_video_stream');
+        socket.off('webcam_frame');  // Detach the frame event
+    }
+
+    // Add listeners to start/stop buttons
+    document.getElementById("toggleForm").addEventListener("click", function (e) {
+        e.preventDefault();
+        const isRunning = this.textContent.includes("Stop");
+        if (isRunning) {
+            stopStream();
+            this.textContent = "Start Webcam";
+        } else {
+            startStream();
+            this.textContent = "Stop Webcam";
+        }
+    });
+
+  // Reload page on form submission to see the updated state of the webcam
+//   document.getElementById('toggleForm').onsubmit = function () {
+//       setTimeout(function () {
+//           window.location.reload();
+//       }, 100); // Adjust delay as needed to wait for the toggle to process
+//       return true;
+//   };
+
+//   // Fetch available webcams and populate the dropdown
+//   fetch("{{ url_for('get_available_webcams') }}")
+//       .then(response => response.json())
+//       .then(webcams => {
+//           const webcamSelect = document.getElementById("webcamSelect");
+//           webcams.forEach(webcam => {
+//               const option = document.createElement("option");
+//               option.value = webcam.id;
+//               option.textContent = webcam.name;
+//               webcamSelect.appendChild(option);
+//           });
+
+//           // Automatically select the first webcam as the default
+//           if (webcams.length > 0) {
+//               webcamSelect.value = webcams[0].id;
+//               updateWebcam(webcams[0].id);
+//           }
+//       })
+//       .catch(error => console.error("Error fetching webcams:", error));
+
+//   // Update webcam whenever a new one is selected
+//   document.getElementById("webcamSelect").addEventListener("change", function () {
+//       const selectedWebcamId = this.value;
+//       updateWebcam(selectedWebcamId);
+//   });
+
+//   // Send the selected webcam ID to the server
+//   function updateWebcam(webcamId) {
+//       fetch("{{ url_for('set_selected_webcam') }}", {
+//           method: "POST",
+//           headers: {
+//               "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ webcam_id: webcamId })
+//       })
+//       .then(response => {
+//           if (response.ok) {
+//               console.log("Webcam updated successfully.");
+//           } else {
+//               console.error("Error updating webcam:", response.statusText);
+//           }
+//       })
+//       .catch(error => console.error("Error updating webcam:", error));
+//   }
+//    // Fetch available confidence levels and populate the dropdown
+//    fetch('/get_all_conf_lv_available', {
+//         method: 'GET'
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         const confLevelSelect = document.getElementById('confLevelSelect');
+
+//         if (data.conf_lv && data.conf_lv.length > 0) {
+//             data.conf_lv.forEach(level => {
+//                 const option = document.createElement('option');
+//                 option.value = level;
+//                 option.textContent = `${(level * 100).toFixed(0)}%`; // Display as percentage
+//                 confLevelSelect.appendChild(option);
+//             });
+//         } else {
+//             confLevelSelect.innerHTML = '<option value="">No Confidence Levels Available</option>';
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error fetching confidence levels:', error);
+//     });
+
+//     // Automatically send the selected confidence level to the server
+//   document.getElementById('confLevelSelect').addEventListener('change', function () {
+//     const selectedConfLevel = this.value;
+//     fetch('/set_conf_lv', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ conf_lv: selectedConfLevel }),
+//     })
+//       .then(response => {
+//         if (!response.ok) throw new Error('Failed to update confidence level');
+//       })
+//       .catch(error => console.error('Error setting confidence level:', error));
+//   });
+
+</script>
+</body>
+</html>

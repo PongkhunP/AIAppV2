@@ -1,0 +1,240 @@
+    body {
+        color: white;
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Stack elements vertically */
+        height: 100vh; /* Full viewport height */
+    }
+
+    header.feature-box.right {
+        background: linear-gradient(135deg, #ff9e00, #ff6600); /* Gradient for depth */
+        color: white;
+        width: 100%;
+        height: 80px;
+        padding: 15px 40px; /* Increased padding for more space */
+        text-align: center; /* Centering the header */
+        display: flex;
+        justify-content: flex-end; /* Spread out the links */
+        align-items: center; /* Align items vertically */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+        border-radius: 8px; /* Rounded corners for a softer look */
+        position: relative; /* Keep the header in normal flow */
+        z-index: 1; /* Ensure it's above other content if needed */
+    }
+
+    /* Ensure body only affects non-header content */
+    body > *:not(header) {
+        flex: 1; /* Allow all content except header to flex and center */
+        width: 100%; /* Ensure content takes up available space */
+    }
+
+    header.feature-box.right nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Center the navigation links */
+    }
+
+    header.feature-box.right nav ul li {
+        margin: 0 20px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: bold;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    header.feature-box.right nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-family: 'Roboto', sans-serif; /* Stylish modern font */
+        transition: color 0.3s ease;
+    }
+
+    header.feature-box.right nav ul li:hover {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    header.feature-box.right nav ul li a:hover {
+        color: #ff6600; /* Change link color on hover */
+    }
+
+    header.feature-box.right nav ul li a:active {
+        color: #e65800; /* Active state color */
+    }
+
+    ul{
+    list-style:none;
+    padding:0px;}
+    li {
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        background: linear-gradient(135deg, #ff9e00, #ff6600); /* Gradient background for a more dynamic look */
+        border-radius: 12px; /* Slightly larger border-radius for smoother curves */
+        padding: 12px 20px; /* Padding for better space and readability */
+        margin: 10px;
+        font-size: 16px; /* Increase font size for readability */
+        font-weight: 600; /* Bold text for emphasis */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        transition: all 0.3s ease-in-out; /* Smooth transition for all effects */
+        cursor: pointer; /* Pointer cursor for better interaction */
+        position: relative;
+    }
+
+    li a {
+        text-decoration: none;
+        color: white;
+        font-size: inherit; /* Ensure link inherits font size from li */
+    }
+
+    li:hover {
+        background: linear-gradient(135deg, #ff7a00, #ff4500); /* Darker gradient on hover */
+        transform: scale(1.08); /* Slight zoom effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More prominent shadow for hover */
+    }
+
+    li:active {
+        background: linear-gradient(135deg, #cc6400, #cc5200); /* Even darker gradient on active (tap/click) */
+        transform: scale(0.98); /* Shrinks slightly when clicked */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Less shadow on active for pressed effect */
+    }
+    header a{
+    color:white;
+    text-decoration:none;
+    width:100%;
+    }
+
+    section.col-sm {
+        background-color: black;
+        width: 1000px;
+        height: auto;
+        border-radius: 35px;
+        margin: 40px;
+        display: flex;
+        justify-content: center; /* Center the image horizontally */
+    }
+
+    img {
+        width: 900px;
+        height: 600px;
+        border-radius: 35px;
+        object-fit: contain;
+        margin: 40px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* Space between the section and the form */
+        width: 1000px; /* Match the width of the section */
+        text-align: center;
+    }
+
+    li {
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        background: linear-gradient(135deg, #ff9e00, #ff6600);
+        border-radius: 12px;
+        padding: 12px 20px;
+        margin: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    li a {
+        text-decoration: none;
+        color: white;
+        font-size: inherit;
+    }
+
+    li:hover {
+        background: linear-gradient(135deg, #ff7a00, #ff4500);
+        transform: scale(1.08);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    li:active {
+        background: linear-gradient(135deg, #cc6400, #cc5200);
+        transform: scale(0.98);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .new {
+        color: black;
+        margin: 0px;
+        padding: 10px;
+        background-color: green;
+        margin-top: -10px;
+    }
+
+    /* Style for buttons */
+    button {
+        border-radius: 15px;
+        width: 180px;
+        height: 50px;
+        background-color: rgb(255, 170, 0);
+        color: white;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        margin: 10px;
+    }
+
+    button:hover {
+        background-color: #e65800;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background-color: #cc8e00;
+    }
+
+    /* Style for select dropdowns */
+    select {
+        border-radius: 10px;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        width: 220px;
+        margin: 10px;
+        border: 2px solid #444;
+        transition: border-color 0.3s;
+    }
+
+    select:hover {
+        border-color: rgb(255, 170, 0);
+    }
+
+    select:focus {
+        border-color: rgb(255, 170, 0);
+        outline: none;
+    }
+
+    /* Style for labels */
+    label {
+        color: white;
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    /* Container for the form and video feed */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
